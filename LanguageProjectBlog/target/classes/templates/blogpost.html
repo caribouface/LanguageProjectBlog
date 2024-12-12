@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Language Project Blog - Blog</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <nav>
+            <img src="/images/logo.png" alt="Language Project Blog Logo" class="logo">
+            <h1>Language Project Blog</h1>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/forum">Forum</a></li>
+                <li><a href="/profile">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="blog-posts">
+            <h2>Create New Blog Post</h2>
+            <div class="blog-post" th:each="post : ${posts}">
+                <h3 th:text="${post.title}"></h3>
+                <p th:text="${post.content}"></p>
+            </div>
+        </section>
+
+        <section class="create-post">
+            <h2>Create a New Post</h2>
+            <form th:action="@{/posts}" method="post">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+
+                <label for="content">Content:</label>
+                <textarea id="content" name="content" required></textarea>
+
+                <button type="submit">Create Post</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Language Project Blog</p>
+    </footer>
+
+</div>
+</body>
+</html>
